@@ -22,10 +22,11 @@ class CategoryTest(TestCase):
     
 class ProductTest(TestCase):
     def test_product_creation(self):
-        product = ProductFactory.create()
+        test_category = CategoryFactory.create()
+        product = ProductFactory.create(category=test_category)
         self.assertTrue(isinstance(product, Product))
         self.assertTrue(isinstance(product.category, Category))
-        self.assertEqual(product.active in [True, False])
+        self.assertTrue(product.active in [True, False])
 
     def test_product_title(self):
         product = ProductFactory.create(title="Test Product")

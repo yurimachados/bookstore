@@ -1,7 +1,7 @@
 import factory
 
 from django.contrib.auth.models import User
-from product.models import ProductFactory
+from product.models import Product
 
 from order.models import Order
 
