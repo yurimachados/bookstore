@@ -1,6 +1,6 @@
 from django.test import TestCase
 from product.models import Product, Category
-from product.tests.factories import ProductFactory, CategoryFactory
+from product.factories import ProductFactory, CategoryFactory
 
 class CategoryTest(TestCase):
     def test_category_creation(self):
@@ -22,13 +22,17 @@ class CategoryTest(TestCase):
     
 class ProductTest(TestCase):
     def test_product_creation(self):
-        product = ProductFactory.create()
+        categories = [CategoryFactory(), CategoryFactory()]
+
+        product = ProductFactory(category=categories)
+
         self.assertTrue(isinstance(product, Product))
-        self.assertTrue(isinstance(product.category, Category))
-        self.assertEqual(product.active in [True, False])
+        for category in product.category.all():
+            self.assertTrue(isinstance(category, Category))
+        self.assertIn(product.active, [True, False])
 
     def test_product_title(self):
-        product = ProductFactory.create(title="Test Product")
+        product = ProductFactory(title="Test Product")
         self.assertEqual(product.title, "Test Product")
     
     def test_product_price(self):
