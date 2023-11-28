@@ -1,0 +1,10 @@
+{'products': [
+        {'id': 1, 'title': 'mouse', 'description': None, 'price': 100, 'active': True, 'category': [
+                {'title': 'technology', 'slug': 'nsxCvyWJSghcWtgSNqPg', 'description': 'SfRWXHRBqUowlxsLCNGZ', 'active': False
+                }
+            ]
+        }
+    ], 
+    'total': 100, 
+    'user': 1
+}

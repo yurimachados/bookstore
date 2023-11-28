@@ -1,5 +1,5 @@
 from django.test import TestCase
-from order.tests_main import OrderFactory, UserFactory
+from order.tests.test_serializers.test_serializer import OrderFactory, UserFactory
 from product.models import Product
 
 # Create your tests here.
