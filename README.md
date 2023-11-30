@@ -10,7 +10,6 @@ poetry install
 ```python
 poetry run python manage.py makemigrations
 ```
-#### Migrate
 ```python
 poetry run python manage.py migrate
 ```
