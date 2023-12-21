@@ -24,7 +24,6 @@ load_dotenv(dotenv_path=BASE_DIR / '.env')
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == 'on'
@@ -141,9 +140,9 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-]
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS").split(" ")
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
