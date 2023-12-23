@@ -22,7 +22,11 @@ class TestOrdeViewSet(APITestCase):
         self.order = OrderFactory(product=[self.product])
 
     def test_order(self):
-        response = self.client.get(reverse("order-list", kwargs={"version": "v1"}))
+        response = self.client.get(
+            reverse(
+                "order-list",
+                kwargs={
+                    "version": "v1"}))
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -30,14 +34,14 @@ class TestOrdeViewSet(APITestCase):
 
         order_data = json.loads(response.content)
         self.assertEqual(
-            order_data["results"][0]["products"][0]["title"], self.product.title
-        )
+            order_data["results"][0]["products"][0]["title"],
+            self.product.title)
         self.assertEqual(
-            order_data["results"][0]["products"][0]["price"], self.product.price
-        )
+            order_data["results"][0]["products"][0]["price"],
+            self.product.price)
         self.assertEqual(
-            order_data["results"][0]["products"][0]["active"], self.product.active
-        )
+            order_data["results"][0]["products"][0]["active"],
+            self.product.active)
         self.assertEqual(
             order_data["results"][0]["products"][0]["category"][0]["title"],
             self.category.title,
@@ -47,7 +51,8 @@ class TestOrdeViewSet(APITestCase):
         user = UserFactory()
         product1 = ProductFactory()
         product2 = ProductFactory()
-        data = json.dumps({"products_id": [product1.id, product2.id], "user": user.id})
+        data = json.dumps(
+            {"products_id": [product1.id, product2.id], "user": user.id})
 
         response = self.client.post(
             reverse("order-list", kwargs={"version": "v1"}),

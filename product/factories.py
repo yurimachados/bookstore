@@ -15,7 +15,11 @@ class CategoryFactory(factory.django.DjangoModelFactory):
 
 
 class ProductFactory(factory.django.DjangoModelFactory):
-    price = factory.Faker("pydecimal", left_digits=5, right_digits=2, positive=True)
+    price = factory.Faker(
+        "pydecimal",
+        left_digits=5,
+        right_digits=2,
+        positive=True)
     category = factory.LazyAttribute(CategoryFactory)
     title = factory.Faker("pystr")
 

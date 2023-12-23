@@ -112,6 +112,7 @@ check-py-mypy: ## Runs mypy
 .PHONY: format-py
 format-py: ## Runs black, makes changes where necessary
 	$(RUN_PYPKG_BIN) black .
+	$(RUN_PYPKG_BIN) autopep8 --in-place --aggressive --aggressive --recursive .
 
 .PHONY: format-autopep8
 format-autopep8:
